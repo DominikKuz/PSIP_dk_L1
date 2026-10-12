@@ -1,1 +1,2 @@
 - Dominik - koniński
+- Tymoteusz - toruński
