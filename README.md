@@ -1,2 +1,13 @@
 - Dominik - koniński
-
+- Dawid - bocheński
+- Bartek - radomszczański
+- Stanisław - turecki
+- Marcin - miński
+- Kacper - legnicki
+- Jan - miński
+- Tymoteusz - toruński
+- Jakub - chełmski
+- Jan - warszawski
+- Julia - hajnowski
+- Michał - biłgorajski
+- Daniel - sochaczewski
