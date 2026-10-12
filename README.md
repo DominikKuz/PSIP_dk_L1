@@ -6,3 +6,4 @@
 - Kacper - legnicki
 - Jan - miński
 - Tymoteusz - toruński
+- Jakub - chełmski
