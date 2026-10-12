@@ -1,3 +1,4 @@
 - Dominik - koniński
 - Dawid - bocheński
 - Bartek - radomszczański
+- Stanisław - turecki
