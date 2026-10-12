@@ -1,2 +1,3 @@
 - Dominik - koniński
 - Dawid - bocheński
+- Bartek - radomszczański
