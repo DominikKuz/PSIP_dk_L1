@@ -2,3 +2,4 @@
 - Dawid - bocheński
 - Bartek - radomszczański
 - Stanisław - turecki
+- Marcin - miński
