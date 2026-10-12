@@ -4,3 +4,4 @@
 - Stanisław - turecki
 - Marcin - miński
 - Kacper - legnicki
+- Jan - miński
