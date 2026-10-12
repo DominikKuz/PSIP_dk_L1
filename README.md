@@ -10,3 +10,4 @@
 - Jan - warszawski
 - Julia - hajnowski
 - Michał - biłgorajski
+- Daniel - sochaczewski
