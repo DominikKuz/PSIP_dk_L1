@@ -1,4 +1,18 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
 
-.runner
-
+# PyCharm
 .idea/
+
+# Dane lokalne
+data/*.zip
+data/*.gpkg
+data/*.gpkg-shm
+data/*.gpkg-wal
+
+# Sekrety
+.runner
+.env
+.env.*
