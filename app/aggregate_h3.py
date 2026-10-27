@@ -60,7 +60,7 @@ def main():
             cur.execute(sql.SQL('''
                 CREATE TABLE grid.{} AS
                 SELECT h3_id, resolution,
-                       ST_Transform(geometry, 2180)::geometry(Polygon,2180) AS geometry
+                       geometry::geometry(Polygon,4326) AS geometry
                 FROM grid.{}
             ''').format(sql.Identifier(out), sql.Identifier(source)))
             cur.execute(sql.SQL('ALTER TABLE grid.{} ADD PRIMARY KEY (h3_id)').format(sql.Identifier(out)))
@@ -72,18 +72,18 @@ def main():
             kind = geom_type.upper()
             if 'POLYGON' in kind:
                 suffix, db_type = 'm2', sql.SQL('double precision')
-                value = sql.SQL('COALESCE(SUM(ST_Area(ST_Intersection(h.geometry, b.{geom}))),0)').format(geom=sql.Identifier(geom))
-                spatial_predicate = sql.SQL('ST_Intersects(h.geometry, b.{geom})').format(geom=sql.Identifier(geom))
+                value = sql.SQL('COALESCE(SUM(ST_Area(ST_Intersection(ST_Transform(h.geometry, 2180), b.{geom}))),0)').format(geom=sql.Identifier(geom))
+                spatial_predicate = sql.SQL('ST_Intersects(ST_Transform(h.geometry, 2180), b.{geom})').format(geom=sql.Identifier(geom))
             elif 'LINESTRING' in kind:
                 suffix, db_type = 'm', sql.SQL('double precision')
-                value = sql.SQL('COALESCE(SUM(ST_Length(ST_Intersection(h.geometry, b.{geom}))),0)').format(geom=sql.Identifier(geom))
-                spatial_predicate = sql.SQL('ST_Intersects(h.geometry, b.{geom})').format(geom=sql.Identifier(geom))
+                value = sql.SQL('COALESCE(SUM(ST_Length(ST_Intersection(ST_Transform(h.geometry, 2180), b.{geom}))),0)').format(geom=sql.Identifier(geom))
+                spatial_predicate = sql.SQL('ST_Intersects(ST_Transform(h.geometry, 2180), b.{geom})').format(geom=sql.Identifier(geom))
             elif 'POINT' in kind:
                 suffix, db_type = 'count', sql.SQL('bigint')
                 value = sql.SQL('COUNT(*)')
                 # ST_Contains nie liczy punktow na krawedziach dwoch komorek.
                 # Punkty dokladnie na granicy zostana pominiete (sprawdzic w kontroli QA).
-                spatial_predicate = sql.SQL('ST_Contains(h.geometry, b.{geom})').format(geom=sql.Identifier(geom))
+                spatial_predicate = sql.SQL('ST_Contains(ST_Transform(h.geometry, 2180), b.{geom})').format(geom=sql.Identifier(geom))
             else:
                 print(f'Pominieto nieobslugiwany typ {table}: {kind}', flush=True)
                 continue
