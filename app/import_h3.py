@@ -4,7 +4,7 @@ import geopandas as gpd
 from sqlalchemy import create_engine, text
 from geoalchemy2 import Geometry
 
-gpkg = r"D:\Projekty\PSIP_dk_L1\data\hexagons.gpkg"
+gpkg = r"D:\Projekty\PSIP_dk_L1\data\hexagons_torun_z_miastem.gpkg"
 
 from getpass import getpass
 from sqlalchemy.engine import URL
